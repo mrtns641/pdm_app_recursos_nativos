@@ -6,11 +6,18 @@ import ListaDeLugaresTela from '../telas/ListaDeLugaresTela'
 import MapaTela from '../telas/MapaTela'
 import NovoLugarTela from '../telas/NovoLugarTela'
 
+import Cores from '../constantes/Cores'
+
 const Stack = createNativeStackNavigator()
 
 const container = (
     <NavigationContainer>
-        <Stack.Navigatior initialRouteName="ListaDeLugares">
+        <Stack.Navigatior 
+            initialRouteName="ListaDeLugares"
+            screenOptions= {{
+                headerStyle: {backgroundColor: Cores.primary},
+                headerTintColor: 'white'
+            }}>
             <Stack.Screen name ="DetalhesDoLugar" component={DetalhesDoLugarTela} />
             <Stack.Screen name ="ListaDeLugares" component={ListaDeLugaresTela} />
             <Stack.Screen name ="Mapa" component={MapaTela} />
