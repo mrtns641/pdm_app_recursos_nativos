@@ -15,32 +15,38 @@ const Stack = createNativeStackNavigator()
 
 const container = (
     <NavigationContainer>
-        <Stack.Navigatior 
+        <Stack.Navigator
             initialRouteName="NovoLugar"
-            screenOptions= {{
-                headerStyle: {backgroundColor: Cores.primary},
+            screenOptions={{
+                headerStyle: { backgroundColor: Cores.primary },
                 headerTintColor: 'white'
             }}>
-            <Stack.Screen name ="DetalhesDoLugar" component={DetalhesDoLugarTela} />
-            <Stack.Screen 
-                name ="ListaDeLugares" 
-                component={ListaDeLugaresTela} 
+            <Stack.Screen
+                name="DetalhesDoLugar"
+                component={DetalhesDoLugarTela}
+                options={(props) => ({
+                    title: props.route.params.titulo
+                })}
+            />
+            <Stack.Screen
+                name="ListaDeLugares"
+                component={ListaDeLugaresTela}
                 options={(props) => ({
                     headerRight: () => <HeaderButtons HeaderButtonComponent={BotaoCabecalho}>
-                        <Item 
+                        <Item
                             title="Adicionar"
                             iconName="md-add"
                             onPress={() => {
                                 console.log("Chamou ...")
                                 props.navigation.navigate('NovoLugar')
                             }}
-                        />                            
+                        />
                     </HeaderButtons>
                 })}
             />
-            <Stack.Screen name ="Mapa" component={MapaTela} />
-            <Stack.Screen name ="NovoLugar" component={NovoLugarTela} />
-        </Stack.Navigatior>
+            <Stack.Screen name="Mapa" component={MapaTela} />
+            <Stack.Screen name="NovoLugar" component={NovoLugarTela} />
+        </Stack.Navigator>
     </NavigationContainer>
 )
 
